@@ -1,15 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:570753531473:task-definition/mycicdapp-task1:1",
+    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:570753531473:task-definition/mycicdapp-task1-1:2",
     "containerDefinitions": [
         {
-            "name": "mycicdapp-container1",
+            "name": "mycicdapp-container1-1",
             "image": "570753531473.dkr.ecr.eu-north-1.amazonaws.com/mycicdapp",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "mycicdapp-container1-80-tcp",
-                    "containerPort": 80,
-                    "hostPort": 80,
+                    "name": "mycicdapp-container1-1-5000-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -23,7 +23,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/mycicdapp-task1",
+                    "awslogs-group": "/ecs/mycicdapp-task1-1",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
@@ -35,10 +35,10 @@
             "systemControls": []
         }
     ],
-    "family": "mycicdapp-task1",
+    "family": "mycicdapp-task1-1",
     "executionRoleArn": "arn:aws:iam::570753531473:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 2,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -78,13 +78,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "512",
-    "memory": "1024",
+    "cpu": "1024",
+    "memory": "3072",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-05-26T15:48:20.008Z",
+    "registeredAt": "2025-05-26T16:44:08.061Z",
     "registeredBy": "arn:aws:iam::570753531473:root",
     "enableFaultInjection": false,
     "tags": []

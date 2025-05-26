@@ -58,3 +58,25 @@ jobs:
         run: |
           docker push ${{ secrets.REPOSITORY }}:latest
           docker push ${{ secrets.REPOSITORY }}:1.0.0
+    deploy:
+    needs: publish
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛠️ Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔐 Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+
+      - name: 🚀 Deploy to Amazon ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ./deployments/ecs-task-definition.json
+          service: mycicdapp-service  
+          cluster: mycicdapp-cluster1           
+          wait-for-service-stability: true
