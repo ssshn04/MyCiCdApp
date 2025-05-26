@@ -19,13 +19,13 @@ jobs:
           dotnet-version: 9.x
 
       - name: 📦 Restore Dependencies
-        run: dotnet restore ./MyCiCdApp/MyCiCdApp.csproj
+        run: dotnet restore ./MyCiCdApp.csproj
 
       - name: 🏗️ Build Project
-        run: dotnet build ./MyCiCdApp/MyCiCdApp.csproj --no-restore
+        run: dotnet build ./MyCiCdApp.csproj --no-restore
 
       - name: ✅ Run Tests
-        run: dotnet test ./MyCiCdApp/MyCiCdApp.csproj --no-build --verbosity normal
+        run: dotnet test ./MyCiCdApp.csproj --no-build --verbosity normal
 
   publish:
     needs: build
@@ -35,10 +35,10 @@ jobs:
       - name: 🛠️ Checkout Repository
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup .NET 8 SDK
+      - name: ⚙️ Setup .NET 9 SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.x
+          dotnet-version: 9.x
 
       - name: 🔐 Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -49,10 +49,10 @@ jobs:
 
       - name: 🔑 Login to Amazon ECR
         run: |
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.REPOSITORY }}
+          aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin ${{ secrets.REPOSITORY }}
 
       - name: 📦 Publish Docker Image to Amazon ECR
-        working-directory: ./MyCiCdApp/
+        working-directory: ./
         run: |
-          dotnet publish -c Release -p:ContainerRepository=${{ secrets.REPOSITORY }} -p:RuntimeIdentifier=linux-x64
+          dotnet publish ./MyCiCdApp.csproj -c Release -p:ContainerRepository=${{ secrets.REPOSITORY }} -p:RuntimeIdentifier=linux-x64
           docker push ${{ secrets.REPOSITORY }} --all-tags
