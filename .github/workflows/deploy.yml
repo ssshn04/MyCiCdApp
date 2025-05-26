@@ -58,7 +58,7 @@ jobs:
         run: |
           docker push ${{ secrets.REPOSITORY }}:latest
           docker push ${{ secrets.REPOSITORY }}:1.0.0
-    deploy:
+  deploy:
     needs: publish
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
