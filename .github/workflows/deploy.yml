@@ -52,7 +52,9 @@ jobs:
           aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin ${{ secrets.REPOSITORY }}
 
       - name: 📦 Publish Docker Image to Amazon ECR
-        working-directory: ./
         run: dotnet publish ./MyCiCdApp.csproj -c Release -p:ContainerRepository=${{ secrets.REPOSITORY }} -p:RuntimeIdentifier=linux-x64
 
-
+      - name: 🚀 Push Docker Image to ECR
+        run: |
+          docker push ${{ secrets.REPOSITORY }}:latest
+          docker push ${{ secrets.REPOSITORY }}:1.0.0
