@@ -7,6 +7,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(80); // HTTP
+    // Якщо потрібно HTTPS, розкоментуй нижче:
+    // options.ListenAnyIP(443, listenOptions => listenOptions.UseHttps());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
