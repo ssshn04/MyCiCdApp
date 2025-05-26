@@ -1,0 +1,11 @@
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\MyCiCdApp
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\appsettings.Development.json
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\appsettings.json
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\MyCiCdApp.dll
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\MyCiCdApp.deps.json
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\MyCiCdApp.runtimeconfig.json
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\MyCiCdApp.pdb
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\Microsoft.OpenApi.dll
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ssshn\source\repos\MyCiCdApp\bin\Release\net8.0\linux-x64\publish\Swashbuckle.AspNetCore.SwaggerUI.dll
