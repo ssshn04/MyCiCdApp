@@ -53,6 +53,6 @@ jobs:
 
       - name: 📦 Publish Docker Image to Amazon ECR
         working-directory: ./
-        run: |
-          dotnet publish ./MyCiCdApp.csproj -c Release -p:ContainerRepository=${{ secrets.REPOSITORY }} -p:RuntimeIdentifier=linux-x64
-          docker push ${{ secrets.REPOSITORY }} --all-tags
+        run: dotnet publish ./MyCiCdApp.csproj -c Release -p:ContainerRepository=${{ secrets.REPOSITORY }} -p:RuntimeIdentifier=linux-x64
+
+
